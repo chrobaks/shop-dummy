@@ -1,0 +1,140 @@
+body {
+    height: 101% !important;
+    overflow: -moz-scrollbars-vertical; 
+    overflow-y: scroll;
+ }
+table {
+    width: 100%;
+}
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+label { font-weight: bold; color: green !important; }
+
+button i, a.btn i {
+    padding-right: 10px;
+}
+
+h1 {
+    color: #afca0a;
+    font-size: 1.5em;
+}
+
+#dev {
+    position: absolute;
+    top: 100px;
+    padding: 30px;
+    border: 1px solid #000;
+    z-index: 999;
+    background-color: #b2b2b2 !important;
+}
+
+#dev.dev-in {
+    left: -160px;
+}
+
+.bottom-buffer { margin-bottom:20px; }
+.text-green { color: green !important; }
+.text-red { color: red !important; }
+
+header {
+    z-index: 2;
+}
+
+header nav.navbar {
+    color: #343a40;
+    border-bottom: 1px solid #343a40;
+    z-index: 1040 !important;
+}
+header nav.navbar a {
+    color: #3c3c3c;
+    font-weight: bold;
+}
+header nav.navbar a:hover {
+    color: #afca0a;
+}
+header a.navbar-brand.logo {
+    padding: 0 10px 0 10px;
+    width: 100px;
+    height: 50px;
+}
+header a.navbar-brand.logo img {
+    width: 100%;
+    height: 100%;
+}
+header button.navbar-toggler:focus {
+    text-decoration: none;
+    outline: 0;
+}
+header button.navbar-toggler:hover {
+    color: green;
+}
+
+header nav.navbar .nav-right li.nav-item {
+    padding-right: 15px !important;
+}
+
+.app-content {
+    width:calc(100% - 120px);
+    margin: 0 auto;
+    padding: 90px 0;
+    margin-bottom: 30px;
+}
+
+.card.category .card-header {
+    font-weight: bold;
+}
+.card.category .card-text {
+    height: 100px;
+}
+.card.category .card-header, .card.category .card-text, .card.category .card-body {
+    text-align: center;
+}
+
+.app-footer {
+    width: 100%;
+    color: #b2b2b2;
+    font-size: 11px !important;
+    z-index: 1;
+}
+.app-footer .d-flex {
+    color: #b2b2b2 !important;
+    margin: 0;
+    padding: 0 !important;
+}
+.app-footer .d-flex .p-2 {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.app-footer .d-flex .p-2 a {
+    color: #fff !important;
+}
+.app-footer .d-flex .p-2 a:hover {
+    color: green !important;
+}
+.app-footer li {
+    /* padding-top: 3px; */
+ }
+ .app-footer p.h2{
+    padding: 0;
+    font-size: 12px;
+    font-weight: bold;
+ }
+
+ #shopCartModal input[type=number] {
+    width: 60px;
+    margin-left: 15px;
+}
+#shopCartModal col-article {
+    margin-bottom: 5px;
+}
+#shopCartModal .shop-sum {
+    font-weight: bold;
+}
+#shopCartModal .modal-msg {
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: 10px;
+}

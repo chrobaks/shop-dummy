@@ -1,0 +1,9 @@
+# Default User
+
+email : testuser@seo-kueche.de
+pass  : seo-test-user
+
+# Default Admn
+
+email : testadmin@seo-kueche.de
+pass  : seo-test-admin
