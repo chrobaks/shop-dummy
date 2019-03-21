@@ -30,6 +30,10 @@ $appConfig['route'] = [
     'redirect' => [
         'payment' => 'login'
     ],
+    'shopFallBack' => [
+        'payment',
+        'order'
+    ],
     'fallback' => 'home',
 ];
 

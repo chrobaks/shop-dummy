@@ -26,30 +26,18 @@ class RouteController
     public function setRoute ()
     {
         $route = (isset($_GET['rt']) && !empty(trim($_GET['rt']))) ? trim($_GET['rt']) : $this->config['route']['fallback'];
+        $route = $this->getShopRoute($route);
 
         if ($route !== $this->config['route']['fallback']) {
             if (in_array($route, $this->config['route']['public'])) {
-                if (AppSession::isUsersession() && $route === 'login') {
-                    $route = $this->config['route']['fallback'];
-                }
+                $route = $this->getPublicRoute($route);
             } elseif (in_array($route, $this->config['route']['private'])) {
-                if (!AppSession::isUsersession()) {
-                    if (isset($this->config['route']['redirect'][$route])) {
-                        AppSession::setValues([
-                            'redirect' => $route, 
-                            'redirectMsg' => 'Bitte melden Sie sich an, um den Vorgang abzuschließen!'
-                        ]);
-                        $route = $this->config['route']['redirect'][$route];
-                    } else {
-                        $route = $this->config['route']['fallback'];
-                    }
-                } 
+                $route = $this->getPrivateRoute($route);
             } elseif (in_array($route, $this->config['route']['admin'])) {
-                if (!AppSession::isUsersession() || AppSession::isUsersession() && $_SESSION['role'] !== '1') {
-                    $route = $this->config['route']['fallback'];
-                }
+                $route = $this->getAdminRoute($route);
             } else {
                 $route = $this->config['route']['fallback'];
+                $this->resetAct();
             }
         }
 
@@ -61,7 +49,7 @@ class RouteController
         $this->request = (isset($_GET['rq']) && !empty(trim($_GET['rq']))) ? trim($_GET['rq']) : '';
     }
 
-    private function setControllerAct ($controllerInstance)
+    private function setControllerAct ($controllerClass, $controllerInstance)
     {
         $act = (isset($_GET['act'])) ? 'set' . ucFirst(trim($_GET['act'])) : '';
 
@@ -69,7 +57,7 @@ class RouteController
             
             $methodVariable = array($controllerInstance, $act);
 
-            if (is_callable($methodVariable, true, $callable_name)) {
+            if (method_exists($controllerClass, $act) && is_callable($methodVariable, true, $callable_name)) {
 
                 $controllerInstance->{$act}();
     
@@ -98,8 +86,62 @@ class RouteController
         $controllerClass = ucfirst($this->route).'Controller';
         $controllerInstance = new $controllerClass($this->config);
 
-        $this->setControllerAct($controllerInstance);
+        $this->setControllerAct($controllerClass, $controllerInstance);
 
         return $controllerInstance;
+    }
+
+    private function getAdminRoute ($route)
+    {
+        if (!AppSession::isUsersession() || AppSession::isUsersession() && $_SESSION['role'] !== '1') {
+            $route = $this->config['route']['fallback'];
+            $this->resetAct();
+        }
+
+        return $route;
+    }
+
+    private function getShopRoute ($route)
+    {
+        if ( ! AppSession::hasValue('shopCart') && in_array($route, $this->config['route']['shopFallBack'])) {
+            $route = $this->config['route']['fallback'];
+            $this->resetAct();
+        } 
+
+        return $route;
+    }
+
+    private function getPublicRoute ($route)
+    {
+        if (AppSession::isUsersession() && $route === 'login') {
+            $route = $this->config['route']['fallback'];
+            $this->resetAct();
+        } 
+
+        return $route;
+    }
+
+    private function getPrivateRoute ($route)
+    {
+        if (!AppSession::isUsersession()) {
+            if (isset($this->config['route']['redirect'][$route])) {
+                AppSession::setValues([
+                    'redirect' => $route, 
+                    'redirectMsg' => 'Bitte melden Sie sich an, um den Vorgang abzuschließen!'
+                ]);
+                $route = $this->config['route']['redirect'][$route];
+                $this->resetAct();
+            } else {
+                $route = $this->config['route']['fallback'];
+                $this->resetAct();
+            }
+        } 
+
+        return $route;
+    }
+
+    private function resetAct ()
+    {
+        unset($_GET['act']);
     }
 }

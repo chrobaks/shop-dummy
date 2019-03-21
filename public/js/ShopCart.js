@@ -32,8 +32,12 @@ const ShopCart = (($) => {
     setShopOrderMsg = (responseData) => 
     {
         
-        $('.form-msg.shopOrder').first().text(responseData.msg);
+        $('.form-msg.shopOrder').text('');
 
+        if (responseData.hasOwnProperty('form')) {
+            $('.form-msg.shopOrder', responseData.form).first().text(responseData.msg);
+        }
+        
         if (responseData.hasOwnProperty('orderSum')) {
             $('#order-sum').text(responseData.orderSum + '€');
         }

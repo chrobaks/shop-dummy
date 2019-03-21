@@ -37,7 +37,6 @@ class AppSession
             if (!empty($shopCart)) {
                 foreach ($shopCart as $index => $item) {
                     if ($item['id'] === $data['id']) {
-                        // $shopCart[$index]['article_count'] = (int) $item['article_count'] + (int) $data['article_count'];
                         $shopCart[$index]['article_count'] = (int) $data['article_count'];
                         $articleExsist = true;
                         break;
@@ -70,6 +69,11 @@ class AppSession
         return $result;
     }
 
+    public static function getSessionUser ()
+    {
+        return (isset($_SESSION['user']) && !empty($_SESSION['user'])) ? $_SESSION['user'] : '';
+    }
+
     public static function resetSession ()
     {
         session_destroy();
@@ -97,11 +101,6 @@ class AppSession
         return $isUserSession;
     }
 
-    public static function getSessionUser ()
-    {
-        return (isset($_SESSION['user']) && !empty($_SESSION['user'])) ? $_SESSION['user'] : '';
-    }
-
     public static function setValues ($values)
     {
         if (!empty($values)) {
@@ -109,5 +108,10 @@ class AppSession
                 $_SESSION[$key] = $val;
             }
         }
+    }
+
+    public static function hasValue ($key)
+    {
+        return (isset($_SESSION[$key]) && !empty($_SESSION[$key])) ? true : false;
     }
 }

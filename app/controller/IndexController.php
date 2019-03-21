@@ -42,10 +42,10 @@ class IndexController
             ]);
             $this->View->setView($Controller->getView());
             
-            if (!empty($_SESSION['shopCart'])) {
+            if (AppSession::hasValue('shopCart')) {
                 $this->View->setView(["shopCart" => $this->ArticleModel->getShopCart(AppSession::getShopCartList())]);
             }
-            if (!empty($_SESSION['redirectMsg'])) {
+            if (AppSession::hasValue('redirectMsg')) {
                 $this->View->setView(['pageText' => $_SESSION['redirectMsg']]);
                 AppSession::setValues(['redirectMsg' => '']);
             }

@@ -1,6 +1,7 @@
 const App = (($, ShopCart) => {
 
     const $app = $('#app');
+    let $ajaxForm = null;
 
     setEvents = () => 
     {
@@ -18,6 +19,7 @@ const App = (($, ShopCart) => {
         });
 
         $('form.formAjax').on('submit', function(event) {
+            $ajaxForm = $(this);
             setAjax($( this ).attr('action'), $( this ).serializeArray());
             event.preventDefault();
             return false;
@@ -58,6 +60,11 @@ const App = (($, ShopCart) => {
                 const callBack = 'set' + response.callBack[0].toUpperCase() + response.callBack.slice(1);
                 
                 if (ShopCart.hasOwnProperty(callBack)) {
+
+                    if ($ajaxForm !== null) {
+                        response['form'] = $ajaxForm;
+                    } 
+
                     ShopCart[callBack](response);
                 }
             }

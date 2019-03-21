@@ -11,7 +11,7 @@
 
         <div class="row bottom-buffer">
             <div class="col-12">
-                <p class="pfont-weight-bold text-green text-center"><?=$view["pageText"];?></p>
+                <p class="font-weight-bold text-green text-center"><?=$view["pageText"];?></p>
             </div>
         </div>
 
