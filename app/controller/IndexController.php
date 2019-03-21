@@ -14,6 +14,7 @@ class IndexController
         $this->View = BaseView::get_instance($appConfig);
         $this->CatModel = new CategoriesModel($appConfig['mysql']);
         $this->ArticleModel = new ArticleModel($appConfig['mysql']);
+
         Validator::setConfig($appConfig['validation']);
     }
 
@@ -43,6 +44,10 @@ class IndexController
             
             if (!empty($_SESSION['shopCart'])) {
                 $this->View->setView(["shopCart" => $this->ArticleModel->getShopCart(AppSession::getShopCartList())]);
+            }
+            if (!empty($_SESSION['redirectMsg'])) {
+                $this->View->setView(['pageText' => $_SESSION['redirectMsg']]);
+                AppSession::setValues(['redirectMsg' => '']);
             }
 
             return true;

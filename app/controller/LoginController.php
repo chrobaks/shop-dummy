@@ -14,7 +14,6 @@ class LoginController extends BaseController
 
         $this->setView([
             'pageTitle' => 'Kunden-Login',
-            'pageText' => (isset($_SESSION['redirectMsg']) && $_SESSION['redirectMsg'] !== '') ?  $_SESSION['redirectMsg'] : '',
         ]);
     }
 

@@ -5,6 +5,7 @@
             <hr>
         </div>
     </div>
+    
     <div class="row bottom-buffer">
         <div class="col-sm-12 col-md-12 bottom-buffer">
             <div class="card articel">
@@ -31,7 +32,7 @@
                     </dl>
                     <dl class="row">
                         <dt class="col-sm-2 font-weight-bold">Gesamtpreis:</dt>
-                        <dd class="col-sm-9 font-weight-bold text-green"><?=$view["orderSum"];?> €</dd>
+                        <dd class="col-sm-9 font-weight-bold text-green"><?=$view["shopCart"]["orderSum"];?> €</dd>
                     </dl>
 
                     <?php else:?>

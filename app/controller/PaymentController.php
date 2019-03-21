@@ -40,8 +40,6 @@ class PaymentController extends BaseController
 
             AppSession::setValues(['shopCart' => []]);
 
-        } else {
-            $this->setView($this->ArticleModel->getShopCart(AppSession::getShopCartList()));
         }
     }
 }
