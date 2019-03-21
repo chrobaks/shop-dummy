@@ -9,7 +9,6 @@ class OrderController extends BaseController
         $this->ArticleModel = new ArticleModel($appConfig['mysql']);
 
         $this->setView([
-            'page' => 'order',
             'pageTitle' => 'Bestellung / Warenkorb Artikel',
         ]);
 

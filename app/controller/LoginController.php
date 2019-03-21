@@ -13,15 +13,12 @@ class LoginController extends BaseController
         $this->loginRedirect = ($_SESSION['redirect'] !== '') ? $appConfig['view']['url'].'?rt='.$_SESSION['redirect'] : '';
 
         $this->setView([
-            'page' => 'login',
             'pageTitle' => 'Kunden-Login',
             'pageText' => (isset($_SESSION['redirectMsg']) && $_SESSION['redirectMsg'] !== '') ?  $_SESSION['redirectMsg'] : '',
         ]);
-
-        $this->setLogin();
     }
 
-    private function setLogin ()
+    public function setLogin ()
     {
         $_POST = Validator::setValidation('login', $_POST);
 

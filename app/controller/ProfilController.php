@@ -9,7 +9,6 @@ class ProfilController extends BaseController
     {
         $this->Model = new UserModel($appConfig['mysql']);
         $this->setView([
-            'page' => 'profil',
             'pageTitle' => 'Benutzer-Einstellungen',
             'profil' => $this->Model->getUser(),
         ]);

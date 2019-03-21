@@ -4,10 +4,8 @@ class HomeController extends BaseController
 {
     public function __construct ($appConfig)
     {
-        $this->setView([
-            'page' => 'home',
-            'pageTitle' => 'Startseite',
-        ]);
+        $this->setView(['pageTitle' => 'Startseite']);
+        
         if (!empty($_SESSION['redirectMsg'])) {
             $this->setView(['pageText' => $_SESSION['redirectMsg']]);
             AppSession::setValues(['redirectMsg' => '']);

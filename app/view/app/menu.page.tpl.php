@@ -28,14 +28,14 @@
                         
                     <?php $active = ''; ?>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="<?=$view['url'];?>?rt=article&act=addArticle&cat=0">Neues Produkt</a>
+                        <a class="dropdown-item" href="<?=$view['url'];?>?rt=shop&act=addArticle&cat=0">Neues Produkt</a>
                     <?php foreach((array) $view['cats'] as $cat):?>
 
                         <?php if(isset($view['articleCat']) && !empty($view['articleCat'])):?>
                         <?php $active = ((int) $cat['id'] === (int) $view['articleCat']['id']) ? ' text-green' : ''; ?>
                         <?php endif;?>
 
-                        <a class="dropdown-item <?=$active;?>" href="<?=$view['url'];?>?rt=article&cat=<?=$cat['id'];?>"><?=$cat['cat_name'];?></a>
+                        <a class="dropdown-item <?=$active;?>" href="<?=$view['url'];?>?rt=shop&act=category&cat=<?=$cat['id'];?>"><?=$cat['cat_name'];?></a>
 
                         <?php endforeach;?>
                         

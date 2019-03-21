@@ -11,17 +11,16 @@ class PaymentController extends BaseController
         $this->UserModel = new UserModel($appConfig['mysql']);
         
         $this->setView([
-            'page' => 'payment',
             'pageTitle' => 'Bestellung / Zahlungs-Einstellungen',
         ]);
-
-        if (!empty($_SESSION['shopCart'])) {
-            $this->setPayment();
-        }
     }
 
-    private function setPayment ()
+    public function setPayment ()
     {
+        if (empty($_SESSION['shopCart'])) {
+            return false;
+        }
+
         if (isset($_POST['payment_type'])) {
 
             $shopCart = $this->ArticleModel->getShopCart(AppSession::getShopCartList());

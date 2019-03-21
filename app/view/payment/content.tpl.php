@@ -8,7 +8,7 @@
     <div class="row bottom-buffer">
         <div class="col-sm-12 col-md-12 bottom-buffer">
             <div class="card articel">
-                <form action="<?=$view['url'];?>?rt=payment" method='post'>
+                <form action="<?=$view['url'];?>?rt=payment&act=payment" method='post'>
                 <div class="card-header font-weight-bold"><?=$view['pageTitle'];?></div>
                 <div class="card-body">
 

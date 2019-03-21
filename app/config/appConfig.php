@@ -20,9 +20,12 @@ $appConfig['route'] = [
         'order',
     ],
     'private' => [
-        'user',
         'payment',
         'profil',
+    ],
+    'admin' => [
+        'shop',
+        'user',
     ],
     'redirect' => [
         'payment' => 'login'
@@ -35,7 +38,7 @@ $appConfig['route'] = [
  * --------------------------------------------- 
  */
 $appConfig['view'] = [
-    'url' => 'http://localhost/seo-kueche/index.php',
+    'url' => 'http://localhost/shop-dummy/index.php',
     'title' => 'SEO-Küche',
     'appTpl' => 'app.tpl'
 ];

@@ -44,6 +44,10 @@ class RouteController
                         $route = $this->config['route']['fallback'];
                     }
                 } 
+            } elseif (in_array($route, $this->config['route']['admin'])) {
+                if (!AppSession::isUsersession() || AppSession::isUsersession() && $_SESSION['role'] !== '1') {
+                    $route = $this->config['route']['fallback'];
+                }
             } else {
                 $route = $this->config['route']['fallback'];
             }
@@ -55,6 +59,27 @@ class RouteController
     public function setRequest ()
     {
         $this->request = (isset($_GET['rq']) && !empty(trim($_GET['rq']))) ? trim($_GET['rq']) : '';
+    }
+
+    private function setControllerAct ($controllerInstance)
+    {
+        $act = (isset($_GET['act'])) ? 'set' . ucFirst(trim($_GET['act'])) : '';
+
+        if ($act !== '') {
+            
+            $methodVariable = array($controllerInstance, $act);
+
+            if (is_callable($methodVariable, true, $callable_name)) {
+
+                $controllerInstance->{$act}();
+    
+            }
+        }
+    }
+
+    public function getRoute ()
+    {
+        return $this->route;
     }
 
     public function getRequest ()
@@ -72,6 +97,8 @@ class RouteController
     {
         $controllerClass = ucfirst($this->route).'Controller';
         $controllerInstance = new $controllerClass($this->config);
+
+        $this->setControllerAct($controllerInstance);
 
         return $controllerInstance;
     }

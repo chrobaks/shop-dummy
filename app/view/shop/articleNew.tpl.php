@@ -1,15 +1,16 @@
-<form action="<?=$view['url'];?>?rt=article&act=addArticle&cat=0"  enctype="multipart/form-data" class="needs-validation" method="post" name="formArticleNew">
-<input type="hidden" name="id" value="0">
 
-    <?php if (isset($view['formMsg'])):?>
+<?php if (isset($view['formMsg'])):?>
 
-    <div class="row bottom-buffer">
-        <div class="col-12">
-            <p class="pfont-weight-bold text-green text-center"><?=$view["formMsg"];?></p>
-        </div>
+<div class="row bottom-buffer">
+    <div class="col-12">
+        <p class="pfont-weight-bold text-green text-center"><?=$view["formMsg"];?></p>
     </div>
+</div>
 
-    <?php endif;?>
+<?php endif;?>
+
+<form action="<?=$view['url'];?>?rt=shop&act=addArticle&cat=0"  enctype="multipart/form-data" class="needs-validation" method="post" name="formArticleNew">
+<input type="hidden" name="id" value="0">
 
 <div class="row bottom-buffer">
         <div class="col-3"><label for="cat_id">Kategorie*:</label></div>

@@ -1,4 +1,4 @@
-<form action="<?=$view['url'];?>?rt=login" class="needs-validation" method="post">
+<form action="<?=$view['url'];?>?rt=login&act=login" class="needs-validation" method="post">
     <div class="container">
         <div class="row bottom-buffer">
             <div class="col-12">

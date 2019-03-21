@@ -9,36 +9,23 @@ class UserController extends BaseController
     {
         $this->ArticleModel = new ArticleModel($appConfig['mysql']);
         $this->UserModel = new UserModel($appConfig['mysql']);
-
-        $this->setView([
-            'page' => 'user',
-            'pageTitle' => 'Benutzer',
-        ]);
-
-        $this->setPostAction();
     }
 
-    private function setPostAction ()
+    public function setAllUser ()
     {
-        $act = (isset($_GET['act'])) ? $_GET['act'] : '';
+        $this->setView([
+            'pageTitle' => 'Alle Benutzer',
+            'pageAct' => 'allUser',
+            'user' => $this->UserModel->getUser(false),
+        ]);
+    }
 
-        if ($act) {
-
-            $this->setView([
-                'pageTitle' => ($act === 'allOrder') ? 'Benutzer-Bestellungen' : 'Alle Benutzer',
-                'pageAct' => $act,
-            ]);
-
-            if ($act === 'allUser') {
-                $this->setView([
-                    'user' => $this->UserModel->getUser(false),
-                ]);
-            } else {
-                $this->setView([
-                    'userOrder' => $this->UserModel->getUserOrder(),
-                ]);
-            }
-
-        }
+    public function setAllOrder ()
+    {
+        $this->setView([
+            'pageTitle' => 'Benutzer-Bestellungen',
+            'pageAct' => 'allOrder',
+            'userOrder' => $this->UserModel->getUserOrder(),
+        ]);
     }
 }

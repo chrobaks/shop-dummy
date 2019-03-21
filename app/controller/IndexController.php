@@ -35,8 +35,11 @@ class IndexController
 
             $Controller = $this->RouteController->getRouteController();
 
+            $this->View->setView([
+                "page" => $this->RouteController->getRoute(),
+                "cats" => $this->CatModel->getCategories()
+            ]);
             $this->View->setView($Controller->getView());
-            $this->View->setView(["cats" => $this->CatModel->getCategories()]);
             
             if (!empty($_SESSION['shopCart'])) {
                 $this->View->setView(["shopCart" => $this->ArticleModel->getShopCart(AppSession::getShopCartList())]);
