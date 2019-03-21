@@ -71,12 +71,8 @@ class ShopController extends BaseController
     {
         $this->Model->setDelete('catDelete', [$_POST['id']]);
 
-        AppSession::setValues([
-            'redirectMsg' => 'Die Daten wurden erfolgreich gelöscht!'
-        ]);
-        
-        header('Location: ' . $this->config['view']['url'].'?rt='.$this->config['route']['fallback'] );
-        exit();
+        AppSession::setValues(['redirectMsg' => 'Die Daten wurden erfolgreich gelöscht!']);
+        AppRedirect::setHeader($this->config['view']['url'], ['rt='.$this->config['route']['fallback']]);
     }
 
     private function setArticleImage ()

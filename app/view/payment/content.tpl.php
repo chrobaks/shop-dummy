@@ -48,7 +48,7 @@
                     <?php if (!isset($view['formMsg'])):?>
                     <a type="button" href="<?=$view['url'];?>?rt=order" class="btn btn-primary"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Zurück zum Warenkorb</a>
                     <button type="submit" class="btn btn-primary"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i> Jetzt kostenpflichtig bestellen</button>
-                    <a type="button" href="#" class="btn btn-primary"><i class="fa fa-trash" aria-hidden="true"></i> Leeren</a>
+                    <a type="button" href="<?=$view['url'];?>?rt=order&act=deleteOrder" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Bestellung löschen</a>
                     <?php endif;?>
                 </div>
                 </form>

@@ -7,26 +7,27 @@
                     <div class="p-2 flex-fill">
                     <p class="h2">Kontakt</p>
                     <div class="">
-                        Telefon: <a href="tel:+49-8031-586461267">08031 / 5864 6126 7</a><br>
-                        Telefax: 08031/58084-98<br> E-Mail: <a href="mailto:info@seo-kueche.de">info@seo-kueche.de</a><br> 
-                        <a href="/kontakt/">Kontaktieren Sie uns »</a>
+                        Telefon: 08031 / 5864 6126 7<br>
+                        Telefax: 08031/58084-98<br> 
+                        E-Mail: <a href="mailto:info@seo-kueche.de">info@seo-kueche.de</a><br> 
+                        <a href="<?=$view['url'];?>?rt=contact">Kontaktieren Sie uns</a>
                     </div>
                     </div>
                     <div class="p-2 flex-fill">
                         <p class="h2">Navigation</p>
                         <div class="menu-footer-navigation-container">
                             <ul id="menu-footer-navigation" class="menu">
-                                <li><a href="https://www.seo-kueche.de/impressum/">Impressum</a></li>
-                                <li><a href="https://www.seo-kueche.de/datenschutzrichtlinien/">Datenschutzrichtlinien</a></li>
-                                <li><a href="https://www.seo-kueche.de/allgemeine-geschaeftsbedingungen/">Allgemeine Geschäftsbedingungen</a></li>
-                                <li><a href="https://www.seo-kueche.de/faq/">FAQ</a></li>
+                                <li><a href="<?=$view['url'];?>?rt=aboutUs&act=impressum">Impressum</a></li>
+                                <li><a href="<?=$view['url'];?>?rt=aboutUs&act=privacy">Datenschutzrichtlinien</a></li>
+                                <li><a href="<?=$view['url'];?>?rt=aboutUs&act=agb">Allgemeine Geschäftsbedingungen</a></li>
+                                <li><a href="<?=$view['url'];?>?rt=aboutUs&act=faq">FAQ</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="p-2 flex-fill">
                         <p class="h2">Kundenlogin</p>
                         <div class="textwidget custom-html-widget">
-                            <a href="https://www.seo-kueche.de/unternehmen/kundenbereich/">Weiter zum Kundenbereich »</a>
+                            <a href="<?=$view['url'];?>?rt=login">Weiter zum Kundenbereich</a>
                         </div>
                     </div>
                     <div class="p-2 flex-fill">

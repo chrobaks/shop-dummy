@@ -10,14 +10,12 @@ class PaymentController extends BaseController
         $this->ArticleModel = new ArticleModel($appConfig['mysql']);
         $this->UserModel = new UserModel($appConfig['mysql']);
         
-        $this->setView([
-            'pageTitle' => 'Bestellung / Zahlungs-Einstellungen',
-        ]);
+        $this->setView(['pageTitle' => 'Bestellung / Zahlungs-Einstellungen']);
     }
 
     public function setPayment ()
     {
-        if (empty($_SESSION['shopCart'])) {
+        if (!AppSession::hasValue('shopCart')) {
             return false;
         }
 
@@ -27,19 +25,14 @@ class PaymentController extends BaseController
             $shopCart['shopCountList'] = $_SESSION['shopCart'];
             
             if ($this->UserModel->setUserOrder($shopCart)) {
-                $this->setView([
-                    'formMsg' => 'Die Bestellung wurde erfolgreich gespeichert!',
-                    'pageTitle' => 'Bestellung / Zahlungs-Bestätigung',
-                ]);
+                $this->setView(['formMsg' => 'Die Bestellung wurde erfolgreich gespeichert!']);
             } else {
-                $this->setView([
-                    'formMsg' => 'Die Bestellung konnte nicht gespeichert werden!',
-                    'pageTitle' => 'Bestellung / Zahlungs-Bestätigung',
-                ]);
+                $this->setView(['formMsg' => 'Die Bestellung konnte nicht gespeichert werden!']);
             }
 
-            AppSession::setValues(['shopCart' => []]);
+            $this->setView(['pageTitle' => 'Bestellung / Zahlungs-Bestätigung']);
 
+            AppSession::setValues(['shopCart' => []]);
         }
     }
 }

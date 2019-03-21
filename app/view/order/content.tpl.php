@@ -5,6 +5,16 @@
                 <hr>
             </div>
         </div>
+        <?php if (isset($view['formMsg'])):?>
+
+        <div class="row bottom-buffer">
+            <div class="col-12">
+                <p class="pfont-weight-bold text-green text-center"><?=$view["formMsg"];?></p>
+            </div>
+        </div>
+
+        <?php endif;?>
+
         <div class="row bottom-buffer">
             <?php if(isset($view['orderShopCart'])):?>
             
@@ -51,7 +61,7 @@
                     </form>
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-trash" aria-hidden="true"></i> Entfernen</button>
+                        <a type="button" href="<?=$view['url'];?>?rt=order&act=deleteArticle&id=<?=$article['id'];?>" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Artikel löschen</a>
                     </div>
                 </div>
             </div>
@@ -68,8 +78,8 @@
                     </dl>
                     </div>
                     <div class="card-footer">
-<a type="button" href="<?=$view['url'];?>?rt=payment&act=<?php if(empty($_SESSION['user'])):?>login<?php else:?>payment<?php endif;?>" class="btn btn-primary"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i> zur Zahlungs-Einstellung</a>
-                        <a type="button" href="#" class="btn btn-primary"><i class="fa fa-trash" aria-hidden="true"></i> Bestellung löschen</a>
+                        <a type="button" href="<?=$view['url'];?>?rt=payment&act=<?php if(empty($_SESSION['user'])):?>login<?php else:?>payment<?php endif;?>" class="btn btn-primary"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i> zur Zahlungs-Einstellung</a>
+                        <a type="button" href="<?=$view['url'];?>?rt=order&act=deleteOrder" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i> Bestellung löschen</a>
                     </div>
                 </div>
             </div>

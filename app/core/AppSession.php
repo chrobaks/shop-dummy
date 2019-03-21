@@ -57,6 +57,22 @@ class AppSession
         }
     }
 
+    public static function deleteShopCartItem ($id)
+    {
+        if (!empty($_SESSION['shopCart'])) {
+
+            $result = [];
+
+            foreach ($_SESSION['shopCart'] as $item) {
+                if ($id !== $item['id']) {
+                    $result[] = $item;
+                }
+            }
+
+            $_SESSION['shopCart'] = $result;
+        }
+    }
+    
     public static function getShopCartList ()
     {
         $result = [];

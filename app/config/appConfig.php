@@ -18,6 +18,8 @@ $appConfig['route'] = [
         'article',
         'shopcart',
         'order',
+        'aboutUs',
+        'contact',
     ],
     'private' => [
         'payment',

@@ -114,8 +114,8 @@ header nav.navbar .nav-right li.nav-item {
 .app-footer .d-flex .p-2 a:hover {
     color: green !important;
 }
-.app-footer li {
-    /* padding-top: 3px; */
+.app-footer div.p-2.flex-fill {
+    padding: 0 20px !important;
  }
  .app-footer p.h2{
     padding: 0;
