@@ -33,9 +33,8 @@ class LoginController extends BaseController
                         AppSession::setValues(['redirect' => '', 'redirectMsg' => '']);
                         $this->route = $this->loginRedirect;
                     }
-
-                    header('Location: ' . $this->route);
-                    exit();
+                    
+                    AppRedirect::setHeader($this->route);
 
                 }else {
                     $this->setView(['formMsg' => 'Die Logindaten waren nicht korrekt']);

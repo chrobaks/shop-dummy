@@ -3,6 +3,7 @@
 class RouteController
 {
     private static $instance;
+    private $routeUrl;
     private $route;
     private $request;
     private $config;
@@ -10,6 +11,7 @@ class RouteController
     public function __construct ($config) 
     {
         $this->config = $config;
+        $this->routeUrl = $config['view']['url'];
         $this->route = '';
         $this->request = '';
     }
@@ -21,6 +23,11 @@ class RouteController
         }
 
         return self::$instance;
+    }
+    
+    public function isRequest ()
+    {
+        return (empty($this->request)) ? false : true;
     }
 
     public function setRoute ()
@@ -36,8 +43,7 @@ class RouteController
             } elseif (in_array($route, $this->config['route']['admin'])) {
                 $route = $this->getAdminRoute($route);
             } else {
-                $route = $this->config['route']['fallback'];
-                $this->resetAct();
+                AppRedirect::setHeader($this->routeUrl);
             }
         }
 
@@ -75,11 +81,6 @@ class RouteController
         $RequestController = RequestController::get_instance($this->config);
         $RequestController->getRequest($this->request);
     }
-    
-    public function isRequest ()
-    {
-        return empty($this->request);
-    }
 
     public function getRouteController ()
     {
@@ -94,8 +95,7 @@ class RouteController
     private function getAdminRoute ($route)
     {
         if (!AppSession::isUsersession() || AppSession::isUsersession() && $_SESSION['role'] !== '1') {
-            $route = $this->config['route']['fallback'];
-            $this->resetAct();
+            AppRedirect::setHeader($this->routeUrl);
         }
 
         return $route;
@@ -104,8 +104,7 @@ class RouteController
     private function getShopRoute ($route)
     {
         if ( ! AppSession::hasValue('shopCart') && in_array($route, $this->config['route']['shopFallBack'])) {
-            $route = $this->config['route']['fallback'];
-            $this->resetAct();
+            AppRedirect::setHeader($this->routeUrl);
         } 
 
         return $route;
@@ -114,8 +113,7 @@ class RouteController
     private function getPublicRoute ($route)
     {
         if (AppSession::isUsersession() && $route === 'login') {
-            $route = $this->config['route']['fallback'];
-            $this->resetAct();
+            AppRedirect::setHeader($this->routeUrl);
         } 
 
         return $route;
@@ -129,11 +127,10 @@ class RouteController
                     'redirect' => $route, 
                     'redirectMsg' => 'Bitte melden Sie sich an, um den Vorgang abzuschließen!'
                 ]);
-                $route = $this->config['route']['redirect'][$route];
-                $this->resetAct();
+
+                AppRedirect::setHeader($this->routeUrl, ['rt='.$this->config['route']['redirect'][$route]]);
             } else {
-                $route = $this->config['route']['fallback'];
-                $this->resetAct();
+                AppRedirect::setHeader($this->routeUrl);
             }
         } 
 

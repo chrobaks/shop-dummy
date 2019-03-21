@@ -30,7 +30,7 @@ class IndexController
         $this->RouteController->setRoute();
         $this->RouteController->setRequest();
 
-        if (!$this->RouteController->isRequest()) {
+        if ($this->RouteController->isRequest()) {
             return false;
         } else {
 
