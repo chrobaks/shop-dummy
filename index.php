@@ -27,12 +27,8 @@ $IndexController = IndexController::get_instance($appConfig);
  * else set ajax request
  */
 if ($IndexController->setRouteController()) {
-
     
     $view = $IndexController->getView();
-    // echo '<pre>';
-    // var_dump($view);
-    // echo '</pre>';
 
     include_once VIEW_PATH.$view['appTpl'].'.php';
 
