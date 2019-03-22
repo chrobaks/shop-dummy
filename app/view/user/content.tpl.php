@@ -59,7 +59,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <?php foreach($view['userOrder'] as $order):?>
+                    <?php foreach($view['allOrder'] as $order):?>
                         <tr>
                         <th scope="row"><?=$order['id'];?></th>
                         <td><?=$order['email'];?></td>

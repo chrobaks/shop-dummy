@@ -13,7 +13,7 @@ class OrderController extends BaseController
         $this->setView(['pageTitle' => 'Bestellung / Warenkorb Artikel']);
 
         if (AppSession::hasValue('shopCart')) {
-            $this->setView($this->ArticleModel->getShopCart(AppSession::getShopCartList()));
+            $this->setView($this->ArticleModel->getShopCart(AppShopCart::getShopCartList()));
         }
     }
 
@@ -26,11 +26,11 @@ class OrderController extends BaseController
 
     public function setDeleteArticle ()
     {
-        AppSession::deleteShopCartItem($_GET['id']);
+        AppShopCart::deleteShopCartItem($_GET['id']);
 
         if (AppSession::hasValue('shopCart')) {
             $this->setView(['formMsg' => 'Die Daten wurden erfolgreich gelöscht!']);
-            $this->setView($this->ArticleModel->getShopCart(AppSession::getShopCartList()));
+            $this->setView($this->ArticleModel->getShopCart(AppShopCart::getShopCartList()));
         } else {
             AppSession::setValues(['redirectMsg' => 'Der Warenkorb wurde erfolgreich gelöscht!']);
             AppRedirect::setHeader($this->config['view']['url']);

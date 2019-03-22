@@ -7,6 +7,7 @@ class IndexController
     private $View;
     private $CatModel;
     private $ArticleModel;
+    private $UserModel;
 
     public function __construct ($appConfig) 
     {
@@ -14,6 +15,7 @@ class IndexController
         $this->View = BaseView::get_instance($appConfig);
         $this->CatModel = new CategoriesModel($appConfig['mysql']);
         $this->ArticleModel = new ArticleModel($appConfig['mysql']);
+        $this->UserModel = new UserModel($appConfig['mysql']);
 
         Validator::setConfig($appConfig['validation']);
     }
@@ -42,9 +44,14 @@ class IndexController
             ]);
             $this->View->setView($Controller->getView());
             
-            if (AppSession::hasValue('shopCart')) {
-                $this->View->setView(["shopCart" => $this->ArticleModel->getShopCart(AppSession::getShopCartList())]);
+            if (AppSession::isUsersession() && AppSession::getValue('role') === '0') {
+                $this->View->setView(["userHasOrder" => $this->UserModel->getUserHasOrder(AppSession::getValue('userId'))]);
             }
+
+            if (AppSession::hasValue('shopCart')) {
+                $this->View->setView(["shopCart" => $this->ArticleModel->getShopCart(AppShopCart::getShopCartList())]);
+            }
+
             if (AppSession::hasValue('redirectMsg')) {
                 $this->View->setView(['pageText' => $_SESSION['redirectMsg']]);
                 AppSession::setValues(['redirectMsg' => '']);

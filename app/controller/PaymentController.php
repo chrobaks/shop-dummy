@@ -21,7 +21,7 @@ class PaymentController extends BaseController
 
         if (isset($_POST['payment_type'])) {
 
-            $shopCart = $this->ArticleModel->getShopCart(AppSession::getShopCartList());
+            $shopCart = $this->ArticleModel->getShopCart(AppShopCart::getShopCartList());
             $shopCart['shopCountList'] = $_SESSION['shopCart'];
             
             if ($this->UserModel->setUserOrder($shopCart)) {

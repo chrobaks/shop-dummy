@@ -76,10 +76,16 @@ $appConfig['mysql'] = [
             WHERE cat.id = ?
             LIMIT 1",
         'user' => "SELECT DISTINCT *, DATE_FORMAT(create_at, '%d.%m.%Y %h:%i') AS createAt FROM user ORDER BY role, email",
-        'userOrder' => "SELECT DISTINCT user_order.id, user_order.payment_type, user_order.order_price, DATE_FORMAT(user_order.create_at, '%d.%m.%Y %h:%i') AS createAt, user.email 
+        'userOrder' => "SELECT DISTINCT user_order.id, user_order.payment_type, user_order.order_price, DATE_FORMAT(user_order.create_at, '%d.%m.%Y %h:%i') AS createAt
+            FROM user_order
+            WHERE user_order.user_id = ? ",
+        'allOrder' => "SELECT DISTINCT user_order.id, user_order.payment_type, user_order.order_price, DATE_FORMAT(user_order.create_at, '%d.%m.%Y %h:%i') AS createAt, user.email 
             FROM user_order
             JOIN user ON user_order.user_id = user.id 
             ORDER BY user_order.id",
+        'userOrderCount' => "SELECT DISTINCT count(user_order.id) AS count
+            FROM user_order
+            JOIN user ON user_order.user_id = ?",
         'loginUser' => "SELECT * FROM user WHERE email = ? LIMIT 1",
         'catDelete' => "DELETE categories, articles_map, articles 
             FROM categories, articles_map, articles

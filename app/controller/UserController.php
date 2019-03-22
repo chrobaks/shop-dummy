@@ -25,7 +25,7 @@ class UserController extends BaseController
         $this->setView([
             'pageTitle' => 'Benutzer-Bestellungen',
             'pageAct' => 'allOrder',
-            'userOrder' => $this->UserModel->getUserOrder(),
+            'allOrder' => $this->UserModel->getUserOrder(),
         ]);
     }
 }

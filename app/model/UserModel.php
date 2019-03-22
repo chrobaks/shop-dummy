@@ -35,11 +35,22 @@ class UserModel extends BaseModel
         return $result;
     }
 
-    public function getUserOrder ()
+    public function getUserOrder ($id = '')
     {
-        $result = $this->getQuery("select", 'userOrder');
+        if ($id === '') {
+            $result = $this->getQuery("select", 'allOrder');
+        } else {
+            $result = $this->getQuery("select", 'userOrder', [$id]);
+        }
         
         return $result;
+    }
+
+    public function getUserHasOrder ($id)
+    {
+        $result = $this->getQuery("select", 'userOrderCount', [$id], true);
+        
+        return (isset($result['count']) && (int) $result['count'] > 0) ? true : false;
     }
 
     public function setUserOrder ($shopCart)

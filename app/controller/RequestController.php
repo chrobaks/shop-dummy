@@ -31,32 +31,32 @@ class RequestController
             $this->setResponse();
         }
     }
+
     private function setShopCart ()
     {
         $countList = [];
         $Model = new ArticleModel($this->config['mysql']);
-        AppSession::updateShopCart($_POST);
+        AppShopCart::updateShopCart($_POST);
 
         if (!empty($_SESSION['shopCart'])) {
-            $this->response = array_merge(['callBack' => 'shopCart'], $Model->getShopCart(AppSession::getShopCartList()));
+            $this->response = array_merge(['callBack' => 'shopCart'], $Model->getShopCart(AppShopCart::getShopCartList()));
         }
         $this->setResponse();
     }
 
     private function setUpdateOrder ()
     {
-        $Model = new ArticleModel($this->config['mysql']);
-        AppSession::updateShopCart($_POST);
+        AppShopCart::updateShopCart($_POST);
         $this->response['status'] = 'success';
         $this->response['callBack'] = 'shopOrderMsg';
         $this->response['msg'] = 'Die Daten wurde aktualisiert!';
-        $this->response['orderSum'] = $Model->getArticleSum(AppSession::getShopCartList());
+        $this->response['orderSum'] = AppShopCart::getShopCartSum();
         $this->setResponse();
     }
 
     private function setUpdateShopCart ()
     {
-        AppSession::updateShopCart($_POST['shopCart'], true);
+        AppShopCart::updateShopCart($_POST['shopCart'], true);
         $this->response['status'] = 'success';
         $this->response['callBack'] = 'shopCartMsg';
         $this->response['msg'] = 'Der Warenkorb wurde aktualisiert!';
@@ -65,7 +65,7 @@ class RequestController
 
     private function setDeleteShopCart ()
     {
-        AppSession::updateShopCart([], true);
+        AppShopCart::updateShopCart([], true);
         $this->response['status'] = 'success';
         $this->response['callBack'] = 'shopCartDelete';
         $this->response['msg'] = 'Der Warenkorb wurde geleert!';

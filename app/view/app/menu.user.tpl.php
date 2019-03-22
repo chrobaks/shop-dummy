@@ -22,7 +22,10 @@
                         <?php if($_SESSION['role'] === '-1'):?>
                         <a class="dropdown-item" href="<?=$view['url'];?>?rt=login">Login</a>
                         <?php else:?>
-                        <a class="dropdown-item" href="<?=$view['url'];?>?rt=profil">Einstellungen</a>
+                            <?php if(isset($view['userHasOrder']) && $view['userHasOrder'] === true):?>
+                            <a class="dropdown-item" href="<?=$view['url'];?>?rt=profil&act=order">Bestellungen</a>
+                            <?php endif;?>
+                        <a class="dropdown-item" href="<?=$view['url'];?>?rt=profil&act=profil">Einstellungen</a>
                         <a class="dropdown-item" href="<?=$view['url'];?>?rt=logout">Logout</a>
                         <?php endif;?>
                     </div>

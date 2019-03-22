@@ -52,34 +52,13 @@ class ArticleModel extends BaseModel
         return ($this->catId !== '') ? $this->getQuery("select", 'articleCat', [$this->catId], true) : [];
     }
 
-    public function getArticleSum ($articles)
-    {
-        $result = 0;
-        
-        foreach($articles as $id => $amount) {
-            
-            $query =  $this->getQuery(vsprintf($this->mysqlConfig["select"]['articleSum'], [$amount, $id]),'', [], true);
-            
-            if (isset($query['price'])) {
-                $result += $query['price'];
-            }
-        }
-        
-        $result = str_replace('.', ',', $result);
-        $decm = explode(',',$result);
-
-        if (strlen($decm[1]) === 1) { $result .= "0"; }
-
-        return $result;
-    }
-
     public function getShopCart ($countList)
     {
         $idList = implode(',', array_keys($countList));
         $result = [
             'shopCountList' => $countList,
             'orderShopCart' => $this->getArticleShopCart($idList),
-            'orderSum' => $this->getArticleSum($countList),
+            'orderSum' => AppShopCart::getShopCartSum(),
         ];
         
         return $result;
