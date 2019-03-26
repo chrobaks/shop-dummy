@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 21. Mrz 2019 um 17:21
+-- Erstellungszeit: 26. Mrz 2019 um 19:58
 -- Server-Version: 10.1.37-MariaDB
 -- PHP-Version: 7.3.0
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Datenbank: `seo_kueche`
+-- Datenbank: `shop_dummy`
 --
 
 -- --------------------------------------------------------
@@ -43,14 +43,6 @@ CREATE TABLE `articles` (
 --
 
 INSERT INTO `articles` (`id`, `article_name`, `article_description`, `price`, `image_url`, `delivery_status`) VALUES
-(1, 'Baby-Artikel 1', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.', '19.99', 'baby-artikel.png', 1),
-(2, 'Baby-Artikel 2', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.', '120.30', 'baby-artikel.png', 1),
-(3, 'Baby-Artikel 3', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.', '5.37', 'baby-artikel.png', 1),
-(4, 'Baby-Artikel 4', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.', '340.00', 'baby-artikel.png', 1),
-(5, 'Kleinkinder-Artikel 1', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa', '12.99', 'kleinkinder-artikel.png', 1),
-(6, 'Kleinkinder-Artikel 2', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa', '10.50', 'kleinkinder-artikel.png', 1),
-(7, 'Kleinkinder-Artikel 3', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa', '834.50', 'kleinkinder-artikel.png', 1),
-(8, 'Kleinkinder-Artikel 4', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa', '14.35', 'kleinkinder-artikel.png', 1),
 (9, 'Fahrzeuge-Artikel 1', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa', '25.50', 'fahrzeuge-artikel.png', 1),
 (10, 'Fahrzeuge-Artikel 2', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa', '40.00', 'fahrzeuge-artikel.png', 1),
 (11, 'Fahrzeuge-Artikel 3', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa', '120.39', 'fahrzeuge-artikel.png', 1),
@@ -60,7 +52,7 @@ INSERT INTO `articles` (`id`, `article_name`, `article_description`, `price`, `i
 (15, 'Technik-Artikel 1', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa', '450.45', 'technik-artikel.png', 1),
 (16, 'Technik-Artikel 2', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa', '12.99', 'technik-artikel.png', 1),
 (17, 'Technik-Artikel 3', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa', '23.35', 'technik-artikel.png', 1),
-(18, 'Ernährungsbuch 1', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.', '13.90', '2019-19-03-17-03-14-produkt-dummy.png', 0),
+(18, 'Ernährungsbuch 1', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.', '13.90', '2019-19-03-17-03-14-produkt-dummy.png', 1),
 (19, 'Ernährungsbuch 2', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.            ', '25.90', '2019-19-03-17-16-48-produkt-dummy.png', 1),
 (20, 'Ernährungsbuch 3', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.            ', '12.50', '2019-19-03-17-18-29-produkt-dummy.png', 1),
 (21, 'Ernährungsbuch Getreide', 'Ein fundierter Ratgeber zu Diagnose und Entwicklungsverlauf von Schaderregern sowie zum sinnvollen Pflanzenschutz.            ', '85.50', '2019-20-03-13-13-17-produkt-dummy.png', 1),
@@ -83,14 +75,6 @@ CREATE TABLE `articles_map` (
 --
 
 INSERT INTO `articles_map` (`article_id`, `cat_id`) VALUES
-(1, 1),
-(2, 1),
-(3, 1),
-(4, 1),
-(5, 2),
-(6, 2),
-(7, 2),
-(8, 2),
 (9, 3),
 (10, 3),
 (11, 3),
@@ -124,8 +108,6 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `cat_name`, `description`) VALUES
-(1, 'Baby', 'Nützliches und wichtiges rund um das Thema Baby.'),
-(2, 'Kleinkinder', 'Umweltbewußte Artikel mit Gütesiegel. Grosse Auswahl an Spielzeug und Büchern für Kleinkinder.'),
 (3, 'Fahrzeuge', 'Hier schlägt das Fahrerherz höher. Das Neuseste zum Thema Fahrzeuge.'),
 (4, 'Spiele', 'Traditionell oder Digital;- in unsere Spielecke bleibt kein Wunsch unerfüllt.'),
 (5, 'Technik', 'Hier fühlen sich Nerds wohl;- aktuelle Produkte aus der IT-Welt.'),
@@ -151,8 +133,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `email`, `pass`, `role`, `create_at`) VALUES
-(1, 'testuser@seo-kueche.de', '$2y$10$AaJUTQBctSp/KhWAhW5xUeZ2Hu3XBqx1awSs9rfUbvKPqlxL2XVmO', 0, '2019-03-15 12:58:21'),
-(2, 'testadmin@seo-kueche.de', '$2y$10$v1HF14eKUMP8J3AwUWe7a.zIyMc3riJ2OO2TUYeTeE50tVVhvoKEO', 1, '2019-03-15 13:00:15');
+(1, 'testuser@netcodev.de', '$2y$10$AaJUTQBctSp/KhWAhW5xUeZ2Hu3XBqx1awSs9rfUbvKPqlxL2XVmO', 0, '2019-03-15 12:58:21'),
+(2, 'testadmin@netcodev.de', '$2y$10$v1HF14eKUMP8J3AwUWe7a.zIyMc3riJ2OO2TUYeTeE50tVVhvoKEO', 1, '2019-03-15 13:00:15');
 
 -- --------------------------------------------------------
 
@@ -175,7 +157,10 @@ CREATE TABLE `user_order` (
 
 INSERT INTO `user_order` (`id`, `user_id`, `payment_type`, `order_price`, `create_at`) VALUES
 (1, 1, 'paypal', '450.45', '2019-03-20 18:08:17'),
-(2, 1, 'paypal', '900.90', '2019-03-21 16:08:14');
+(2, 1, 'paypal', '900.90', '2019-03-21 16:08:14'),
+(3, 1, 'paypal', '450.45', '2019-03-21 19:41:00'),
+(4, 1, 'credit', '12.99', '2019-03-21 23:35:14'),
+(5, 1, 'paypal', '900.90', '2019-03-22 17:59:39');
 
 -- --------------------------------------------------------
 
@@ -198,7 +183,10 @@ CREATE TABLE `user_order_article` (
 
 INSERT INTO `user_order_article` (`id`, `user_order_id`, `article_id`, `article_price`, `amount`) VALUES
 (1, 1, 15, '450.45', 1),
-(2, 2, 15, '450.45', 2);
+(2, 2, 15, '450.45', 2),
+(3, 3, 15, '450.45', 1),
+(4, 4, 5, '12.99', 1),
+(5, 5, 15, '450.45', 2);
 
 --
 -- Indizes der exportierten Tabellen
@@ -254,13 +242,13 @@ ALTER TABLE `user_order_article`
 -- AUTO_INCREMENT für Tabelle `articles`
 --
 ALTER TABLE `articles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT für Tabelle `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT für Tabelle `user`
@@ -272,13 +260,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT für Tabelle `user_order`
 --
 ALTER TABLE `user_order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT für Tabelle `user_order_article`
 --
 ALTER TABLE `user_order_article`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
