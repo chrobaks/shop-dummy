@@ -18,6 +18,7 @@ $files = Autoloader::getFiles(
     ],
     [
         CONFIG_PATH.'appConfig.php',
+        CORE_PATH.'AppConfig.php',
         CORE_PATH.'PDOHandler.php',
     ]
 );

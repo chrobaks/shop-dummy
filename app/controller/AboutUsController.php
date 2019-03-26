@@ -2,7 +2,7 @@
 
 class AboutUsController extends BaseController
 {
-    public function __construct ($appConfig)
+    public function __construct ()
     {
         $this->setView(['pageTitle' => 'Über Uns']);
     }

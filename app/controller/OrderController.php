@@ -3,12 +3,10 @@
 class OrderController extends BaseController
 {
     private $ArticleModel;
-    private $config;
 
-    public function __construct ($appConfig)
+    public function __construct ()
     {
-        $this->ArticleModel = new ArticleModel($appConfig['mysql']);
-        $this->config = $appConfig;
+        $this->ArticleModel = new ArticleModel();
 
         $this->setView(['pageTitle' => 'Bestellung / Warenkorb Artikel']);
 
@@ -21,7 +19,7 @@ class OrderController extends BaseController
     {
         AppSession::setValues(['shopCart' => []]);
         AppSession::setValues(['redirectMsg' => 'Die Daten wurden erfolgreich gelöscht!']);
-        AppRedirect::setHeader($this->config['view']['url']);
+        AppRedirect::setHeader(AppConfig::getConfig('view', ['url']));
     }
 
     public function setDeleteArticle ()
@@ -33,7 +31,7 @@ class OrderController extends BaseController
             $this->setView($this->ArticleModel->getShopCart(AppShopCart::getShopCartList()));
         } else {
             AppSession::setValues(['redirectMsg' => 'Der Warenkorb wurde erfolgreich gelöscht!']);
-            AppRedirect::setHeader($this->config['view']['url']);
+            AppRedirect::setHeader(AppConfig::getConfig('view', ['url']));
         }  
     }
 }

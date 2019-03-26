@@ -4,9 +4,9 @@ class UserModel extends BaseModel
 {
     public $error;
 
-    public function __construct ($mysqlConfig)
+    public function __construct ()
     {
-        parent::__construct($mysqlConfig);
+        parent::__construct();
         $this->error = [];
     }
 
@@ -23,9 +23,11 @@ class UserModel extends BaseModel
         return $loginOk;
     }
 
-    public function getUser ($getSessUser = true)
+    public function getUser ($getSessUser = true, $userId = 0)
     {
-        if ($getSessUser) {
+        if ((int) $userId > 0) {
+            $result = $this->getQuery("select", 'userById', [$userId], true);
+        } elseif ($getSessUser) {
             $sessUser = AppSession::getSessionUser();
             $result = $this->getQuery("select", 'loginUser', [$sessUser], true);
         } else {
@@ -51,6 +53,19 @@ class UserModel extends BaseModel
         $result = $this->getQuery("select", 'userOrderCount', [$id], true);
         
         return (isset($result['count']) && (int) $result['count'] > 0) ? true : false;
+    }
+
+    public function setUser ()
+    {
+        if ((int)  $_POST['id'] === 0) {
+
+            
+        } else {
+            
+            $this->setUpdate('user', $this->getPostModel('profil', ['id' =>  $_POST['id']]));
+        }
+
+        return (empty($this->modelError)) ? true : false;
     }
 
     public function setUserOrder ($shopCart)

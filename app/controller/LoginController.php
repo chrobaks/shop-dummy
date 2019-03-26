@@ -6,11 +6,11 @@ class LoginController extends BaseController
     private $route;
     private $loginRedirect;
 
-    public function __construct ($appConfig)
+    public function __construct ()
     {
-        $this->Model = new UserModel($appConfig['mysql']);
-        $this->route = $appConfig['view']['url'].'?rt='.$appConfig['route']['fallback'];
-        $this->loginRedirect = ($_SESSION['redirect'] !== '') ? $appConfig['view']['url'].'?rt='.$_SESSION['redirect'] : '';
+        $this->Model = new UserModel();
+        $this->route = AppConfig::getConfig('view', ['url']);
+        $this->loginRedirect = ($_SESSION['redirect'] !== '') ? AppConfig::getConfig('view', ['url']).'?rt='.$_SESSION['redirect'] : '';
 
         $this->setView([
             'pageTitle' => 'Kunden-Login',

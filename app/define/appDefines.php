@@ -37,8 +37,8 @@ define('ENVIROMENT', ($_SERVER['REMOTE_ADDR'] === '127.0.0.1') ? 'develope' : 'p
  * --------------------------------------------- 
  */
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'seo_kueche');
-define('DB_USER', 'seo_kueche');
+define('DB_NAME', 'shop_dummy');
+define('DB_USER', 'shop_dummy');
 define('DB_PASS', '!e3R_i.M96uZ_?');
 
 

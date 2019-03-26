@@ -11,13 +11,14 @@ class IndexController
 
     public function __construct ($appConfig) 
     {
-        $this->RouteController = RouteController::get_instance($appConfig);
-        $this->View = BaseView::get_instance($appConfig);
-        $this->CatModel = new CategoriesModel($appConfig['mysql']);
-        $this->ArticleModel = new ArticleModel($appConfig['mysql']);
-        $this->UserModel = new UserModel($appConfig['mysql']);
-
+        AppConfig::setConfig($appConfig);
         Validator::setConfig($appConfig['validation']);
+
+        $this->RouteController = RouteController::get_instance();
+        $this->View = BaseView::get_instance();
+        $this->CatModel = new CategoriesModel();
+        $this->ArticleModel = new ArticleModel();
+        $this->UserModel = new UserModel();
     }
 
     public static function get_instance($appConfig)

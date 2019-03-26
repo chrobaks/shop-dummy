@@ -2,9 +2,9 @@
 
 class CategoriesModel extends BaseModel
 {
-    public function __construct ($mysqlConfig)
+    public function __construct ()
     {
-        parent::__construct($mysqlConfig);
+        parent::__construct();
     }
 
     public function getCategories ()

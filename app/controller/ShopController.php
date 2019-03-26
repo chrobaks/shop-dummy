@@ -4,12 +4,10 @@ class ShopController extends BaseController
 {
     
     private $Model;
-    private $config;
 
-    public function __construct ($appConfig)
+    public function __construct ()
     {
-        $this->Model = new ArticleModel($appConfig['mysql']);
-        $this->config = $appConfig;
+        $this->Model = new ArticleModel();
     }
 
     public function setCategory ()
@@ -72,7 +70,7 @@ class ShopController extends BaseController
         $this->Model->setDelete('catDelete', [$_POST['id']]);
 
         AppSession::setValues(['redirectMsg' => 'Die Daten wurden erfolgreich gelöscht!']);
-        AppRedirect::setHeader($this->config['view']['url'], ['rt='.$this->config['route']['fallback']]);
+        AppRedirect::setHeader(AppConfig::getConfig('view', ['url']));
     }
 
     private function setArticleImage ()

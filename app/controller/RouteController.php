@@ -8,18 +8,18 @@ class RouteController
     private $request;
     private $config;
 
-    public function __construct ($config) 
+    public function __construct () 
     {
-        $this->config = $config;
-        $this->routeUrl = $config['view']['url'];
+        $this->config =  AppConfig::getConfig();
+        $this->routeUrl = $this->config['view']['url'];
         $this->route = '';
         $this->request = '';
     }
 
-    public static function get_instance($config)
+    public static function get_instance()
     {
         if( ! isset(self::$instance)){
-            self::$instance = new RouteController($config);
+            self::$instance = new RouteController();
         }
 
         return self::$instance;
@@ -78,14 +78,14 @@ class RouteController
 
     public function getRequest ()
     {
-        $RequestController = RequestController::get_instance($this->config);
+        $RequestController = RequestController::get_instance();
         $RequestController->getRequest($this->request);
     }
 
     public function getRouteController ()
     {
         $controllerClass = ucfirst($this->route).'Controller';
-        $controllerInstance = new $controllerClass($this->config);
+        $controllerInstance = new $controllerClass();
 
         $this->setControllerAct($controllerClass, $controllerInstance);
 

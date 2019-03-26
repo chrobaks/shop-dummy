@@ -6,6 +6,7 @@
         <meta name="description" content="">
         <meta name="author" content="SEO-Küche, Shop">
         <title><?=$view['title'];?> / <?=$view['pageTitle'];?></title> 
+        <link rel="shortcut icon" type="image/x-icon" href="<?=IMAGE_URL;?>favicon.ico">
         <link rel='stylesheet' href='<?=CSS_URL;?>bootstrap.min.css' type='text/css' media='all' />
         <link rel='stylesheet' href='<?=CSS_URL;?>bootstrap-grid.min.css' type='text/css' media='all' />
         <link rel='stylesheet' href='<?=CSS_URL;?>app.css' type='text/css' media='all' />

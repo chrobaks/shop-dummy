@@ -6,12 +6,12 @@ class BaseView
     private static $instance;
     private $view;
 
-    public function __construct ($appConfig) {
-        $this->view = $appConfig['view'];
+    public function __construct () {
+        $this->view = AppConfig::getConfig('view');
     }
 
-    public static function get_instance($appConfig){
-        if( ! isset(self::$instance)){self::$instance = new BaseView($appConfig);}
+    public static function get_instance(){
+        if( ! isset(self::$instance)){self::$instance = new BaseView();}
 
         return self::$instance;
     }

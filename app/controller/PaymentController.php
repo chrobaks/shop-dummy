@@ -5,10 +5,10 @@ class PaymentController extends BaseController
     private $ArticleModel;
     private $UserModel;
 
-    public function __construct ($appConfig)
+    public function __construct ()
     {
-        $this->ArticleModel = new ArticleModel($appConfig['mysql']);
-        $this->UserModel = new UserModel($appConfig['mysql']);
+        $this->ArticleModel = new ArticleModel();
+        $this->UserModel = new UserModel();
         
         $this->setView(['pageTitle' => 'Bestellung / Zahlungs-Einstellungen']);
     }

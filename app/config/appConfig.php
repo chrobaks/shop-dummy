@@ -45,7 +45,7 @@ $appConfig['route'] = [
  */
 $appConfig['view'] = [
     'url' => 'http://localhost/shop-dummy/index.php',
-    'title' => 'SEO-Küche',
+    'title' => 'NetCoDev / SHOP-Dummy',
     'appTpl' => 'app.tpl'
 ];
 
@@ -87,6 +87,7 @@ $appConfig['mysql'] = [
             FROM user_order
             JOIN user ON user_order.user_id = ?",
         'loginUser' => "SELECT * FROM user WHERE email = ? LIMIT 1",
+        'userById' => "SELECT * FROM user WHERE id = ? LIMIT 1",
         'catDelete' => "DELETE categories, articles_map, articles 
             FROM categories, articles_map, articles
             WHERE categories.id = ?
@@ -99,6 +100,7 @@ $appConfig['mysql'] = [
         'categories' => ['cat_name', 'description'],
         'articles' => ['article_name', 'article_description', 'price', 'image_url', 'delivery_status'],
         'articles_map' => ['article_id', 'cat_id'],
+        'profil' => ['email'],
     ],
     'replace' => [
         'db' => [
@@ -126,5 +128,8 @@ $appConfig['validation'] = [
     ],
     'articles_map' => [
         'required' => ['article_id', 'cat_id'],
+    ],
+    'profil' => [
+        'required' => ['id', 'email'],
     ],
 ];

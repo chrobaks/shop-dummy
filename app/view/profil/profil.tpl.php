@@ -1,5 +1,6 @@
 
-        <form action="<?=$view['url'];?>?rt=profil" class="needs-validation" method="post">
+        <form action="<?=$view['url'];?>?rt=profil&act=profil" class="needs-validation" method="post">
+        <input type="hidden" name="id" value="<?=$view['profil']['id'];?>">
         <div class="row bottom-buffer">
             <div class="col-2"><label for="email">Email-Adesse:</label></div>
             <div class="col-6">

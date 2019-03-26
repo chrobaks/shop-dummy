@@ -4,9 +4,9 @@ class ArticleController extends BaseController
 {
     private $Model;
 
-    public function __construct ($appConfig)
+    public function __construct ()
     {
-        $this->Model = new ArticleModel($appConfig['mysql']);
+        $this->Model = new ArticleModel();
 
         $articleCat = $this->Model->getArticleCat();
         

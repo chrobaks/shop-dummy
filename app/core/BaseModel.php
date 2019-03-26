@@ -20,9 +20,9 @@ class BaseModel extends PDOHandler
      *
      * @return void
      */
-    public function __construct ($mysqlConfig) {
+    public function __construct () {
         $this->modelDB = parent::get_instance();
-        $this->mysqlConfig = $mysqlConfig;
+        $this->mysqlConfig = AppConfig::getConfig('mysql');
         $this->modelError = [];
         $this->truncateIgnore = [];
     }

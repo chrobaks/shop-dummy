@@ -6,16 +6,16 @@ class RequestController
     private $config;
     private $response;
 
-    public function __construct ($config) 
+    public function __construct () 
     {
-        $this->config = $config;
+        $this->config = AppConfig::getConfig();
         $this->response = ['status'=>'error'];
     }
 
-    public static function get_instance($config)
+    public static function get_instance()
     {
         if( ! isset(self::$instance)){
-            self::$instance = new RequestController($config);
+            self::$instance = new RequestController();
         }
 
         return self::$instance;

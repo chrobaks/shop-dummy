@@ -4,10 +4,10 @@ class LogoutController extends BaseController
 {
     private $route;
 
-    public function __construct ($appConfig)
+    public function __construct ()
     {
         AppSession::resetSession();
-        AppRedirect::setHeader($appConfig['view']['url'], ['rt='.$appConfig['route']['fallback']]);
+        AppRedirect::setHeader(AppConfig::getConfig('view', ['url']).'?rt='.AppConfig::getConfig('route', ['fallback']));
     }
 
 }

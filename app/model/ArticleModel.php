@@ -4,9 +4,9 @@ class ArticleModel extends BaseModel
 {
     private $catId;
 
-    public function __construct ($mysqlConfig)
+    public function __construct ()
     {
-        parent::__construct($mysqlConfig);
+        parent::__construct();
         $this->catId = (isset($_GET['cat']) && !empty(trim($_GET['cat']))) ? trim($_GET['cat']) : '';
     }
 
