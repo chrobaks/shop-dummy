@@ -21,6 +21,20 @@ class ShopController extends BaseController
         ]);
     }
 
+    public function setSearch ()
+    {
+        $_POST = AppValidator::setValidation('articleSearch', $_POST);
+        $articles = [];
+            
+        if (AppValidator::isValid()) {
+            $articles = $this->Model->getArticleSearch($_POST['str_search']);
+        }
+        $this->setView([
+            'pageTitle' => 'Produkt-Suche',
+            'articles' => $articles,
+        ]);
+    }
+
     public function setAddArticle ()
     {
         if (isset($_POST['id'])) {

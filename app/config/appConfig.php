@@ -64,6 +64,12 @@ $appConfig['mysql'] = [
             WHERE am.cat_id = ? ORDER BY a.article_name",
         'articles' => "SELECT DISTINCT *, REPLACE(price, '.', ',') AS str_price FROM articles",
         'articleSum' => "SELECT DISTINCT price * %d AS price FROM articles WHERE id = %d",
+        'articleSearch' => "SELECT a.*, REPLACE(a.price, '.', ',') AS str_price, cat.cat_name, cat.id 
+            FROM articles a
+            JOIN articles_map am ON a.id=am.article_id
+            JOIN categories cat ON cat.id=am.cat_id
+            WHERE a.article_name LIKE '%s'
+            ORDER BY cat.cat_name, a.article_name",
         'articleShopCart' => "SELECT a.*, REPLACE(a.price, '.', ',') AS str_price, cat.cat_name 
             FROM articles a
             JOIN articles_map am ON a.id=am.article_id
@@ -116,6 +122,9 @@ $appConfig['validation'] = [
     'articles' => [
         'required' => ['id', 'cat_id', 'article_name', 'article_description', 'price'],
         'optional' => ['image_url', 'delivery_status', 'cat_name', 'description'],
+    ],
+    'articleSearch' => [
+        'required' => ['str_search'],
     ],
     'categories' => [
         'required' => ['cat_name', 'description'],

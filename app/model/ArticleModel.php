@@ -68,4 +68,9 @@ class ArticleModel extends BaseModel
     {
         return $this->getQuery(vsprintf($this->mysqlConfig["select"]['articleShopCart'], [$idList]));
     }
+
+    public function getArticleSearch ($strSearch)
+    {
+        return $this->getQuery(vsprintf($this->mysqlConfig["select"]['articleSearch'], ['%'.$strSearch.'%']));
+    }
 }

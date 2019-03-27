@@ -11,9 +11,11 @@
             <?php include_once 'menu.page.tpl.php';?>
             <?php include_once 'menu.user.tpl.php';?>
 
-            <form class="form-inline mt-2 mt-md-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <form class="form-inline mt-2 mt-md-0" 
+             action="<?=$view['url'];?>?rt=<?php if($_SESSION['role'] === '1'):?>shop<?php else:?>article<?php endif;?>&act=search" 
+             method="post">
+                <input class="form-control mr-sm-2" name="str_search" type="text" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Suche</button>
             </form>
         </div>
     </nav>

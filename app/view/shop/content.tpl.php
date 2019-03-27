@@ -4,8 +4,8 @@
             <div class="col-12">
                 <h1>
                     <?=$view['pageTitle'];?>
-                    <?php if(isset($view['articleCat']) && !empty($view['articleCat'])):?>
-                      (<?=$view['articleCat']['acount'];?>)
+                    <?php if(isset($view['articles']) && !empty($view['articles'])):?>
+                      (<?=count($view['articles']);?>)
                     <?php endif;?>
                 </h1>
                 <hr>
