@@ -24,7 +24,10 @@ class AppRequest
 
             $Model = new ArticleModel();
 
-            self::setResponse(array_merge(['callBack' => 'shopCart'], $Model->getShopCart(AppShopCart::getShopCartList())));
+            self::setResponse(array_merge([
+                'callBack' => 'shopCart',
+                'msg' => 'Der Warenkorb wurde aktualisiert!'
+            ], $Model->getShopCart(AppShopCart::getShopCartList())));
         }
 
         self::setResponse();

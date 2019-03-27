@@ -44,6 +44,7 @@
                                     <button type="submit" class="btn btn-primary">
                                         <i class="fa fa-shopping-cart" aria-hidden="true"></i> in den Warenkorb
                                     </button>
+                                    <span class="form-msg shopOrder text-green font-weight-bold"></span>
                                 </dd>
                             </dl>
                         </form>

@@ -31,7 +31,6 @@ const ShopCart = (($) => {
 
     setShopOrderMsg = (responseData) => 
     {
-        
         $('.form-msg.shopOrder').text('');
 
         if (responseData.hasOwnProperty('form')) {
@@ -80,6 +79,8 @@ const ShopCart = (($) => {
             $shopCart.find('button[disabled]').removeAttr('disabled');
             $shopCart.find('.modal-msg').first().text('');
         }
+
+        setShopOrderMsg(responseData);
     } 
 
     setShopSum = (sum) => 

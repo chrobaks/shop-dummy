@@ -43,7 +43,7 @@ class ShopController extends BaseController
             $this->setView(['formMsg' => $formMsg]);
         }
 
-        $this->setView(['subPage' => 'articleNew', 'pageTitle' => 'Shop / Neues Produkt']);
+        $this->setView(['pageTitle' => 'Shop / Neues Produkt']);
     }
 
     public function setUpdateArticle ()

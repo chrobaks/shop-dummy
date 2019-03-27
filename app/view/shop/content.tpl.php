@@ -12,9 +12,6 @@
             </div>
         </div>
 
-        <?php 
-            $tpl = (isset($view['subPage'])) ? $view['subPage'].'.tpl.php' : 'articles.tpl.php';
-            include_once $tpl;
-        ?>
+        <?php include_once $view['pageAction'].'.tpl.php';?>
         
     </div>

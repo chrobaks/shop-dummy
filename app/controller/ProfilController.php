@@ -39,7 +39,6 @@ class ProfilController extends BaseController
         $this->setView([
             'pageTitle' => 'Benutzer-Einstellungen',
             'profil' => $this->Model->getUser(),
-            'subPage' => 'profil',
         ]);
 
     }
@@ -49,7 +48,6 @@ class ProfilController extends BaseController
         $this->setView([
             'pageTitle' => 'Benutzer-Bestellungen',
             'userOrder' => $this->Model->getUserOrder(AppSession::getValue('userId')),
-            'subPage' => 'order',
         ]);
     }
 }

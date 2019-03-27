@@ -17,7 +17,7 @@
 
         <?php endif;?>
 
-        <?php include_once $view['subPage'].'.tpl.php';?>
+        <?php include_once $view['pageAction'].'.tpl.php';?>
 
 </div>
 
