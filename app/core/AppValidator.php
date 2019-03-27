@@ -2,21 +2,17 @@
 
 class AppValidator
 {
-    private static $config;
     private static $error;
 
-    public static function setConfig ($config)
-    {
-        AppValidator::$config = $config;
-    }
     public static function setValidation ($validationId, $data)
     {
         $result = [];
+        $config = AppConfig::getConfig('validation');
         AppValidator::$error = [];
 
-        if (is_array($data) && !empty($data) && isset(AppValidator::$config[$validationId]) ) {
+        if (is_array($data) && !empty($data) && isset($config[$validationId]) ) {
             
-            $validation = AppValidator::$config[$validationId];
+            $validation =$config[$validationId];
             $result = AppValidator::validate($validation, 'required', $data);
 
             if (isset($validation['optional'])) {

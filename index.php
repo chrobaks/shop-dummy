@@ -18,9 +18,14 @@ require_once INC_PATH.'autoloader.inc.php';
 AppSession::startSession();
 
 /**
+ * Set App Config
+ */
+AppConfig::setConfig($appConfig);
+
+/**
  * Instance Index controller
  */
-$IndexController = IndexController::get_instance($appConfig);
+$IndexController = IndexController::get_instance();
 
 /**
  * Set view if is page route

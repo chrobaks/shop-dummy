@@ -26,7 +26,7 @@
                     <div class="card-header"><?=$cat['cat_name'];?> (<?=$cat['acount'];?>)</div>
                         <div class="card-body">
                             <p class="card-text"><?=$cat['description'];?></p>
-                            <a href="<?=$view['url'];?>?rt=article&cat=<?=$cat['id'];?>" class="btn btn-primary">
+                            <a href="<?=$view['url'];?>?rt=article&act=catArticles&cat=<?=$cat['id'];?>" class="btn btn-primary">
                             <i class="fa fa-eye" aria-hidden="true"></i> zu den Artikeln
                             </a>
                         </div>

@@ -8,20 +8,17 @@ class IndexController
     private $ArticleModel;
     private $UserModel;
 
-    public function __construct ($appConfig) 
+    public function __construct () 
     {
-        AppConfig::setConfig($appConfig);
-        AppValidator::setConfig($appConfig['validation']);
-
         $this->View = BaseView::get_instance();
         $this->CatModel = new CategoriesModel();
         $this->ArticleModel = new ArticleModel();
         $this->UserModel = new UserModel();
     }
 
-    public static function get_instance($appConfig)
+    public static function get_instance()
     {
-        if( ! isset(self::$instance)){self::$instance = new IndexController($appConfig);}
+        if( ! isset(self::$instance)){self::$instance = new IndexController();}
 
         return self::$instance;
     }
