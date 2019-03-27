@@ -34,6 +34,6 @@ if ($IndexController->setRouteController()) {
 
 } else {
 
-    $IndexController->setRequestController();
+    $IndexController->setRequest();
 
 }

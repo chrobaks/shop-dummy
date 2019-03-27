@@ -27,9 +27,9 @@ class ShopController extends BaseController
 
             $this->setArticleImage();
 
-            $_POST = Validator::setValidation('articles', $_POST);
+            $_POST = AppValidator::setValidation('articles', $_POST);
 
-            if (Validator::isValid()) {
+            if (AppValidator::isValid()) {
 
                 $formMsg =  ($this->Model->setArticle()) 
                     ? 'Der Artikel wurde erfolgreich gespeichert!' 
@@ -37,7 +37,7 @@ class ShopController extends BaseController
 
             } else {
                 
-                $formMsg = 'Keine Einträge gefunden für folgende Felder!'.implode(',', Validator::getError());
+                $formMsg = 'Keine Einträge gefunden für folgende Felder!'.implode(',', AppValidator::getError());
             }
             
             $this->setView(['formMsg' => $formMsg]);
@@ -48,9 +48,9 @@ class ShopController extends BaseController
 
     public function setUpdateArticle ()
     {
-        $_POST = Validator::setValidation('articles', $_POST);
+        $_POST = AppValidator::setValidation('articles', $_POST);
 
-        if (Validator::isValid()) {
+        if (AppValidator::isValid()) {
 
             $formMsg =  ($this->Model->setArticle()) 
                 ? 'Der Artikel wurde erfolgreich gespeichert!' 
@@ -58,7 +58,7 @@ class ShopController extends BaseController
 
         } else {
             
-            $formMsg = 'Keine Einträge gefunden für folgende Felder!'.implode(',', Validator::getError());
+            $formMsg = 'Keine Einträge gefunden für folgende Felder!'.implode(',', AppValidator::getError());
         }
         
         $this->setView(['formMsg' => $formMsg]);

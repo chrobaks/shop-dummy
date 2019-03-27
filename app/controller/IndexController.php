@@ -11,7 +11,7 @@ class IndexController
     public function __construct ($appConfig) 
     {
         AppConfig::setConfig($appConfig);
-        Validator::setConfig($appConfig['validation']);
+        AppValidator::setConfig($appConfig['validation']);
 
         $this->View = BaseView::get_instance();
         $this->CatModel = new CategoriesModel();
@@ -58,7 +58,7 @@ class IndexController
         }
     }
 
-    public function setRequestController ()
+    public function setRequest ()
     {
         AppRoute::setRequest();
     }

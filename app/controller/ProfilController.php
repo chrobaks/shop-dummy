@@ -17,9 +17,9 @@ class ProfilController extends BaseController
     {
         if (isset($_POST['id'])) {
 
-            $_POST = Validator::setValidation('profil', $_POST);
+            $_POST = AppValidator::setValidation('profil', $_POST);
 
-            if (Validator::isValid()) {
+            if (AppValidator::isValid()) {
 
                 $formMsg = 'Die Daten konnten nicht gespeichert werden!';
 
@@ -30,7 +30,7 @@ class ProfilController extends BaseController
 
             } else {
                 
-                $formMsg = 'Keine Einträge gefunden für folgende Felder!'.implode(',', Validator::getError());
+                $formMsg = 'Keine Einträge gefunden für folgende Felder!'.implode(',', AppValidator::getError());
             }
             
             $this->setView(['formMsg' => $formMsg]);

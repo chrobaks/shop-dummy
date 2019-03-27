@@ -19,11 +19,11 @@ class LoginController extends BaseController
 
     public function setLogin ()
     {
-        $_POST = Validator::setValidation('login', $_POST);
+        $_POST = AppValidator::setValidation('login', $_POST);
 
         if (!empty($_POST)) {
 
-            if (!Validator::isValid()) {
+            if (!AppValidator::isValid()) {
                 $this->setView(['formMsg' => 'Die Logindaten waren nicht vollständig']);
             } else {
 

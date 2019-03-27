@@ -52,8 +52,7 @@ class AppRoute
 
     public static function setRequest ()
     {
-        $RequestController = RequestController::get_instance();
-        $RequestController->getRequest(self::$route['controller']);
+        AppRequest::setRequest(self::$route['controller']);
     }
 
     private static function setControllerAct ($controllerClass, $controllerInstance)
@@ -162,8 +161,6 @@ class AppRoute
         } else {
             return true;
         }
-
-        
     }
 
     private static function resetAct ()
