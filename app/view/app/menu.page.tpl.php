@@ -69,7 +69,7 @@
                 <?php endif;?>
 
                 <li class="nav-item">
-                    <a class="nav-link <?=$active;?>" href="<?=$view['url'];?>?rt=article&act=catArticles&cat=<?=$cat['id'];?>"><?=$cat['cat_name'];?></a>
+                    <a class="nav-link <?=$active;?>" href="<?=$view['url'];?>?rt=article&act=category&cat=<?=$cat['id'];?>"><?=$cat['cat_name'];?></a>
                 </li>
 
                 <?php endforeach;?>

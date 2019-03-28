@@ -15,6 +15,19 @@ class AppRequest
         }
     }
 
+    public static function getRequestParam ($request, $propKeys)
+    {
+        $result = [];
+
+        if (!empty($propKeys)) {
+            foreach($propKeys as $key) {
+                $result[$key] = (isset($request[$key])) ? trim($request[$key]) : '';
+            }
+        }
+
+        return $result;
+    }
+
     
     private static function setShopCart ()
     {

@@ -12,14 +12,15 @@ $appConfig = [];
  */
 $appConfig['route'] = [
     'public' => [
+        'aboutUs',
+        'article',
+        'contact',
         'home',
         'login',
         'logout',
-        'article',
-        'shopcart',
         'order',
-        'aboutUs',
-        'contact',
+        'shopcart',
+        'signUp',
     ],
     'private' => [
         'payment',
@@ -31,6 +32,10 @@ $appConfig['route'] = [
     ],
     'redirect' => [
         'payment' => 'login'
+    ],
+    'publicFallBack' => [
+        'login',
+        'signUp'
     ],
     'shopFallBack' => [
         'payment',
@@ -117,7 +122,13 @@ $appConfig['mysql'] = [
 
 $appConfig['validation'] = [
     'login' => [
+        'required' => ['email', 'pass', 'role']
+    ],
+    'signUp' => [
         'required' => ['email', 'pass']
+    ],
+    'resetPass' => [
+        'required' => ['email']
     ],
     'articles' => [
         'required' => ['id', 'cat_id', 'article_name', 'article_description', 'price'],

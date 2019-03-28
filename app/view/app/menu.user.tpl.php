@@ -20,7 +20,8 @@
                     </a>
                     <div class="dropdown-menu">
                         <?php if($_SESSION['role'] === '-1'):?>
-                        <a class="dropdown-item" href="<?=$view['url'];?>?rt=login">Login</a>
+                        <a class="dropdown-item" href="<?=$view['url'];?>?rt=login&act=login">Login</a>
+                        <a class="dropdown-item" href="<?=$view['url'];?>?rt=signUp">Registrieren</a>
                         <?php else:?>
                             <?php if(isset($view['userHasOrder']) && $view['userHasOrder'] === true):?>
                             <a class="dropdown-item" href="<?=$view['url'];?>?rt=profil&act=order">Bestellungen</a>

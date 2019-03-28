@@ -11,8 +11,6 @@ class AppRoute
         'action' => ''
     ];
 
-    private static $routeUrl;
-    private static $routes;
     private static $fallBack;
     private static $isRequest;
 
@@ -23,7 +21,7 @@ class AppRoute
         if (!self::$isRequest) {
             
             if (!self::setRouteValidation()) {
-                AppRedirect::setHeader(self::$routeUrl, self::$redirect['props']);
+                AppRedirect::setHeader(AppConfig::getConfig('view', ['url']), self::$redirect['props']);
             }
         }
 
@@ -73,22 +71,17 @@ class AppRoute
 
     private static function setRouteProps ()
     {
-
-        self::$routeUrl = AppConfig::getConfig('view', ['url']);
-        self::$routes = AppConfig::getConfig('route');
         self::$fallBack = AppConfig::getConfig('route', ['fallback']);
         self::$isRequest = false;
-
-        $rt = (isset($_GET['rt']) && !empty(trim($_GET['rt']))) ? trim($_GET['rt']) : self::$fallBack;
-        $rq = (isset($_GET['rq']) && !empty(trim($_GET['rq']))) ? trim($_GET['rq']) : '';
-        $act = (isset($_GET['act']) && !empty(trim($_GET['act']))) ? trim($_GET['act']) : '';
-
-        if ($rq !== '') {
-            self::$route['controller'] = $rq;
+        
+        $getParam = AppRequest::getRequestParam($_GET, ['rt', 'rq', 'act']);
+        
+        if ($getParam['rq'] !== '') {
+            self::$route['controller'] = $getParam['rq'];
             self::$isRequest = true;
         } else {
-            self::$route['controller'] = $rt;
-            self::$route['action'] = $act;
+            self::$route['controller'] = (!empty($getParam['rt'])) ? $getParam['rt'] : self::$fallBack;
+            self::$route['action'] = $getParam['act'];
         }
     }
 
@@ -96,12 +89,13 @@ class AppRoute
     {
         $controller = self::$route['controller'];
         $routes = ['shopFallBack', 'public', 'private', 'admin'];
+        $configRoutes = AppConfig::getConfig('route');
         $isValid = true;
 
         if ($controller !==  self::$fallBack) {
 
             foreach($routes as $route) {
-                if (in_array($controller, self::$routes[$route])) {
+                if (in_array($controller, $configRoutes[$route])) {
                     $meth = 'set'.ucfirst($route).'Route';
                     if (!$isValid = self::{$meth}()) {
                         break;
@@ -133,7 +127,7 @@ class AppRoute
 
     private static function setPublicRoute ()
     {
-        if (AppSession::isUsersession() && self::$route['controller'] === 'login') {
+        if (AppSession::isUsersession() && in_array(self::$route['controller'], AppConfig::getConfig('route', ['publicFallBack']))) {
             return false;
         } 
 

@@ -9,7 +9,7 @@ class ArticleController extends BaseController
         $this->Model = new ArticleModel();
     }
 
-    public function setCatArticles ()
+    public function setCategory ()
     {
         $articleCat = $this->Model->getArticleCat();
         $this->setView([

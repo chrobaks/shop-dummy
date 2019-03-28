@@ -24,7 +24,7 @@
                     <div class="p-2 flex-fill">
                         <p class="h2">Kundenlogin</p>
                         <div class="textwidget custom-html-widget">
-                            <a href="<?=$view['url'];?>?rt=login">Weiter zum Kundenbereich</a>
+                            <a href="<?=$view['url'];?>?rt=login&act=login">Weiter zum Kundenbereich</a>
                         </div>
                     </div>
                     <div class="p-2 flex-fill">

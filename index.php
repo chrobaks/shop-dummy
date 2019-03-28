@@ -13,7 +13,7 @@ require_once 'app'.DIRECTORY_SEPARATOR.'define'.DIRECTORY_SEPARATOR.'appDefines.
 require_once INC_PATH.'autoloader.inc.php';
 
 /**
- * Start Session
+ * Start App Session
  */
 AppSession::startSession();
 

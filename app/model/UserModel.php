@@ -37,6 +37,13 @@ class UserModel extends BaseModel
         return $result;
     }
 
+    public function getUserIsUnique ($user)
+    {
+        $result = $this->getQuery("select", 'loginUser', [$user], true);
+
+        return (isset($result['id'])) ? false : true;
+    }
+
     public function getUserOrder ($id = '')
     {
         if ($id === '') {
